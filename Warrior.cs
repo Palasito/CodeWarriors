@@ -66,7 +66,14 @@ namespace MyFirstConsoleGame_Warriors_
                 {
                     enemy.isAlive = false;
                     Console.WriteLine($"{enemy.name} {enemy.title} is dead! {name} {title} is victorious");
+                    Console.WriteLine($"{name} has {health} health remaining!");
                 }
+                else
+                {
+                    Console.WriteLine($"{name} attacked {enemy.name}! Inflicted {damage} damage to {enemy.name}!");
+                    Console.WriteLine($"Remaining health of {enemy.name} is {enemy.health}");
+                }
+                Thread.Sleep( 200 );
             }
         }
     }
