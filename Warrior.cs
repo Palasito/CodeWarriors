@@ -105,13 +105,14 @@ namespace MyFirstConsoleGame_Warriors_
                 if (enemy.health <= 0)
                 {
                     enemy.isAlive = false;
-                    Console.WriteLine($"{enemy.name} {enemy.title} is dead! {name} {title} is victorious!");
-                    Console.WriteLine($"{name} has {health} health remaining!");
+                    Tools.ColorfulLine ($"{enemy.name} {enemy.title} is dead!", ConsoleColor.Red);
+                    Tools.ColorfulLine($"{name} {title} is victorious!", ConsoleColor.Green);
+                    Tools.ColorfulLine($"{name} has {(int)Math.Round(health,0)} health remaining!", ConsoleColor.White);
                 }
                 else
                 {
                     Console.WriteLine($"{name} attacked {enemy.name}! Inflicted {damage} damage to {enemy.name}!");
-                    Console.WriteLine($"Remaining health of {enemy.name} is {enemy.health}");
+                    Console.WriteLine($"Remaining health of {enemy.name} is {(int)Math.Round(enemy.health, 0)}");
                 }
                 Thread.Sleep(500);
             }
