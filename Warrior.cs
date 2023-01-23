@@ -50,6 +50,14 @@ namespace MyFirstConsoleGame_Warriors_
             }
         }
 
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+
         public Warrior(string name, string title, Faction faction, Weapon weapon, Armor armor)
         {
             this.name = name;
@@ -80,7 +88,7 @@ namespace MyFirstConsoleGame_Warriors_
 
                 if (critChance.Next(0, 10) < 3)
                 {
-                    damage = (float)(((weapon.Damage + weapon.CritDamage) - enemy.armor.Deflection) / (enemy.armor.ArmorPoints * 0.5));
+                    damage = (float)((((weapon.Damage * 2) + weapon.CritDamage) - enemy.armor.Deflection) / (enemy.armor.ArmorPoints * 0.5));
                 }
 
                 else
@@ -97,7 +105,7 @@ namespace MyFirstConsoleGame_Warriors_
                 if (enemy.health <= 0)
                 {
                     enemy.isAlive = false;
-                    Console.WriteLine($"{enemy.name} {enemy.title} is dead! {name} {title} is victorious");
+                    Console.WriteLine($"{enemy.name} {enemy.title} is dead! {name} {title} is victorious!");
                     Console.WriteLine($"{name} has {health} health remaining!");
                 }
                 else
@@ -105,7 +113,7 @@ namespace MyFirstConsoleGame_Warriors_
                     Console.WriteLine($"{name} attacked {enemy.name}! Inflicted {damage} damage to {enemy.name}!");
                     Console.WriteLine($"Remaining health of {enemy.name} is {enemy.health}");
                 }
-                Thread.Sleep(200);
+                Thread.Sleep(500);
             }
         }
     }

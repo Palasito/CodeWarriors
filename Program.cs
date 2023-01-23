@@ -23,7 +23,11 @@ namespace MyFirstConsoleGame_Warriors_
                     player1.Attack(player2);
                     if (player1.Weapon.Speed > player2.Weapon.Speed)
                     {
-                        player1.Attack(player2);
+                        if (rng.Next(0, 10) < 8)
+                        {
+                            player1.Attack(player2);
+                            Console.WriteLine($"{player1.Name} Attacked Again due to faster Weapon");
+                        }
                     }
                 }
                 else
@@ -31,7 +35,11 @@ namespace MyFirstConsoleGame_Warriors_
                     player2.Attack(player1);
                     if (player2.Weapon.Speed > player1.Weapon.Speed)
                     {
-                        player2.Attack(player1);
+                        if (rng.Next(0,10) < 8)
+                        {
+                            player2.Attack(player1);
+                            Console.WriteLine($" {player2.Name} Attacked Again");
+                        }
                     }
                 }
             }
