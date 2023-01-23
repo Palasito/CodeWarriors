@@ -1,5 +1,6 @@
 ﻿using MyFirstConsoleGame_Warriors_.@enum;
 using MyFirstConsoleGame_Warriors_.Equipment;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 
 namespace MyFirstConsoleGame_Warriors_
@@ -14,6 +15,8 @@ namespace MyFirstConsoleGame_Warriors_
 
         private Weapon weapon;
         private Armor armor;
+        static Random critChance = new Random();
+        private float damage;
 
         public bool IsAlive
         {
@@ -74,10 +77,19 @@ namespace MyFirstConsoleGame_Warriors_
         {
             if (enemy.isAlive)
             {
-                float damage = (float)((weapon.Damage - enemy.armor.Deflection) / (enemy.armor.ArmorPoints * 0.5));
 
-                if (damage < 0) 
-                { 
+                if (critChance.Next(0, 10) < 3)
+                {
+                    damage = (float)(((weapon.Damage + weapon.CritDamage) - enemy.armor.Deflection) / (enemy.armor.ArmorPoints * 0.5));
+                }
+
+                else
+                {
+                    damage = (float)((weapon.Damage - enemy.armor.Deflection) / (enemy.armor.ArmorPoints * 0.5));
+                }
+
+                if (damage < 0)
+                {
                     damage = 0;
                 }
                 enemy.health -= damage;
@@ -93,7 +105,7 @@ namespace MyFirstConsoleGame_Warriors_
                     Console.WriteLine($"{name} attacked {enemy.name}! Inflicted {damage} damage to {enemy.name}!");
                     Console.WriteLine($"Remaining health of {enemy.name} is {enemy.health}");
                 }
-                Thread.Sleep( 200 );
+                Thread.Sleep(200);
             }
         }
     }
