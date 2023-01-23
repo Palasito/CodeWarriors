@@ -8,7 +8,7 @@ namespace MyFirstConsoleGame_Warriors_
     {
         private string title;
         private readonly Faction FACTION;
-        private int health;
+        private float health;
         private string name;
         private bool isAlive;
 
@@ -28,6 +28,22 @@ namespace MyFirstConsoleGame_Warriors_
             get
             {
                 return title;
+            }
+        }
+
+        public Weapon Weapon
+        {
+            get
+            {
+                return weapon;
+            }
+        }
+
+        public Armor Armor
+        {
+            get
+            {
+                return armor;
             }
         }
 
@@ -58,8 +74,12 @@ namespace MyFirstConsoleGame_Warriors_
         {
             if (enemy.isAlive)
             {
-                int damage = (weapon.Damage - enemy.armor.Deflection) / enemy.armor.ArmorPoints;
+                float damage = (float)((weapon.Damage - enemy.armor.Deflection) / (enemy.armor.ArmorPoints * 0.5));
 
+                if (damage < 0) 
+                { 
+                    damage = 0;
+                }
                 enemy.health -= damage;
 
                 if (enemy.health <= 0)

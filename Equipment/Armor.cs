@@ -4,11 +4,11 @@ namespace MyFirstConsoleGame_Warriors_
 {
     class Armor
     {
-        private int armorPoints;
-        private int deflection;
+        private float armorPoints;
+        private float deflection;
         private ArmorType type;
 
-        public int ArmorPoints
+        public float ArmorPoints
         {
             get
             {
@@ -16,7 +16,7 @@ namespace MyFirstConsoleGame_Warriors_
             }
         }
 
-        public int Deflection
+        public float Deflection
         {
             get
             {
@@ -61,6 +61,22 @@ namespace MyFirstConsoleGame_Warriors_
                 case ArmorType.Vibranium: 
                     this.armorPoints = 50;
                     this.deflection = 10;
+                    break;
+                case ArmorType.Kasmir:
+                    this.armorPoints = 18;
+                    this.deflection = 1;
+                    break;
+                case ArmorType.Microfiber:
+                    this.armorPoints = 28;
+                    this.deflection = 19;
+                    break;
+                case ArmorType.Mohair:
+                    this.armorPoints = 38;
+                    this.deflection = 9;
+                    break;
+                case ArmorType.Silk:
+                    this.armorPoints = 8;
+                    this.deflection = 34;
                     break;
             }
         }

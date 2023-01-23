@@ -11,7 +11,7 @@ namespace MyFirstConsoleGame_Warriors_
             Weapon weapon1 = new Weapon(WeaponType.Pen);
             Armor armor1 = new Armor(ArmorType.Leather);
 
-            Weapon weapon2 = new Weapon(WeaponType.FryingPan);
+            Weapon weapon2 = new Weapon(WeaponType.Axe);
             Armor armor2 = new Armor(ArmorType.Mail);
             Warrior player1 = new Warrior("Palas", "the Great", Faction.BadGuy, weapon1, armor1);
             Warrior player2 = new Warrior("Foe", "the Shit", Faction.GoodGuy, weapon2, armor2);
@@ -21,10 +21,18 @@ namespace MyFirstConsoleGame_Warriors_
                 if (rng.Next(0,10) < 5)
                 {
                     player1.Attack(player2);
+                    if (player1.Weapon.Speed > player2.Weapon.Speed)
+                    {
+                        player1.Attack(player2);
+                    }
                 }
                 else
                 {
                     player2.Attack(player1);
+                    if (player2.Weapon.Speed > player1.Weapon.Speed)
+                    {
+                        player2.Attack(player1);
+                    }
                 }
             }
         }

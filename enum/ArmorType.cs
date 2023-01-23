@@ -6,6 +6,10 @@
         Leather,
         Mail,
         Plate,
-        Vibranium
+        Vibranium,
+        Microfiber,
+        Kasmir,
+        Silk,
+        Mohair
     }
 }

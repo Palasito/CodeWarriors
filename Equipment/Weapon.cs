@@ -4,12 +4,12 @@ namespace MyFirstConsoleGame_Warriors_.Equipment
 {
     class Weapon
     {
-        private int damage;
+        private float damage;
         private int critDamage;
         private int speed;
         private WeaponType type;
 
-        public int Damage
+        public float Damage
         {
             get
             {
@@ -24,33 +24,41 @@ namespace MyFirstConsoleGame_Warriors_.Equipment
             }
         }
 
+        public int Speed
+        {
+            get
+            {
+                return speed;
+            }
+        }
+
         public Weapon(WeaponType type)
         {
             this.type = type;
             switch (type)
             {
                 case WeaponType.Axe:
-                    damage = 24;
+                    damage = 124;
                     critDamage = 30;
                     speed = 10;
                     break;
                 case WeaponType.Sword:
-                    damage = 15;
+                    damage = 115;
                     critDamage = 23;
                     speed = 50;
                     break;
                 case WeaponType.Pin:
-                    damage = 6;
+                    damage = 106;
                     critDamage = 10;
                     speed = 100;
                     break;
                 case WeaponType.Pen:
-                    damage = 40;
+                    damage = 140;
                     critDamage = 60;
                     speed = 60;
                     break;
                 case WeaponType.FryingPan:
-                    damage = 75;
+                    damage = 175;
                     critDamage = 100;
                     speed = 1;
                     break;
