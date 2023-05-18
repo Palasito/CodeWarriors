@@ -1,5 +1,6 @@
 ﻿using MyFirstConsoleGame_Warriors_.@enum;
 using MyFirstConsoleGame_Warriors_.Equipment;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 
 namespace MyFirstConsoleGame_Warriors_
@@ -14,6 +15,8 @@ namespace MyFirstConsoleGame_Warriors_
 
         private Weapon weapon;
         private Armor armor;
+        static Random critChance = new Random();
+        private float damage;
 
         public bool IsAlive
         {
@@ -47,6 +50,14 @@ namespace MyFirstConsoleGame_Warriors_
             }
         }
 
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+
         public Warrior(string name, string title, Faction faction, Weapon weapon, Armor armor)
         {
             this.name = name;
@@ -74,10 +85,19 @@ namespace MyFirstConsoleGame_Warriors_
         {
             if (enemy.isAlive)
             {
-                float damage = (float)((weapon.Damage - enemy.armor.Deflection) / (enemy.armor.ArmorPoints * 0.5));
 
-                if (damage < 0) 
-                { 
+                if (critChance.Next(0, 10) < 3)
+                {
+                    damage = (float)((((weapon.Damage * 2) + weapon.CritDamage) - enemy.armor.Deflection) / (enemy.armor.ArmorPoints * 0.5));
+                }
+
+                else
+                {
+                    damage = (float)((weapon.Damage - enemy.armor.Deflection) / (enemy.armor.ArmorPoints * 0.5));
+                }
+
+                if (damage < 0)
+                {
                     damage = 0;
                 }
                 enemy.health -= damage;
@@ -85,15 +105,16 @@ namespace MyFirstConsoleGame_Warriors_
                 if (enemy.health <= 0)
                 {
                     enemy.isAlive = false;
-                    Console.WriteLine($"{enemy.name} {enemy.title} is dead! {name} {title} is victorious");
-                    Console.WriteLine($"{name} has {health} health remaining!");
+                    Tools.ColorfulLine ($"{enemy.name} {enemy.title} is dead!", ConsoleColor.Red);
+                    Tools.ColorfulLine($"{name} {title} is victorious!", ConsoleColor.Green);
+                    Tools.ColorfulLine($"{name} has {(int)Math.Round(health,0)} health remaining!", ConsoleColor.White);
                 }
                 else
                 {
                     Console.WriteLine($"{name} attacked {enemy.name}! Inflicted {damage} damage to {enemy.name}!");
-                    Console.WriteLine($"Remaining health of {enemy.name} is {enemy.health}");
+                    Console.WriteLine($"Remaining health of {enemy.name} is {(int)Math.Round(enemy.health, 0)}");
                 }
-                Thread.Sleep( 200 );
+                Thread.Sleep(500);
             }
         }
     }

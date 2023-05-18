@@ -58,7 +58,7 @@ namespace MyFirstConsoleGame_Warriors_.Equipment
                     speed = 60;
                     break;
                 case WeaponType.FryingPan:
-                    damage = 175;
+                    damage = 205;
                     critDamage = 100;
                     speed = 1;
                     break;
