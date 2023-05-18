@@ -58,10 +58,10 @@ namespace MyFirstConsoleGame_Warriors_
 
             switch (faction)
             {
-                case Faction.GoodGuy:
+                case Faction.Elf:
                     this.health = 500;
                     break;
-                case Faction.BadGuy:
+                case Faction.Orc:
                     this.health = 400;
                     break;
                 default:

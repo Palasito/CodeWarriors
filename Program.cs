@@ -13,8 +13,8 @@ namespace MyFirstConsoleGame_Warriors_
 
             Weapon weapon2 = new Weapon(WeaponType.Axe);
             Armor armor2 = new Armor(ArmorType.Mail);
-            Warrior player1 = new Warrior("Palas", "the Great", Faction.BadGuy, weapon1, armor1);
-            Warrior player2 = new Warrior("Foe", "the Shit", Faction.GoodGuy, weapon2, armor2);
+            Warrior player1 = new Warrior("Palas", "the Great", Faction.Orc, weapon1, armor1);
+            Warrior player2 = new Warrior("Foe", "the Shit", Faction.Elf, weapon2, armor2);
 
             while (player1.IsAlive && player2.IsAlive)
             {

@@ -2,7 +2,7 @@
 {
     enum Faction
     {
-        GoodGuy,
-        BadGuy
+        Elf,
+        Orc
     }
 }
